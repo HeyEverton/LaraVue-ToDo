@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import TelaLogin from '@/views/TelaLogin.vue'
+import TelaCadastro from '@/views/TelaCadastro'
 
 Vue.use(VueRouter)
 
@@ -10,6 +12,19 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+
+  {
+    path: '/login',
+    name: 'login',
+    component: TelaLogin,
+  },
+
+  {
+    path: '/register',
+    name: 'register',
+    component: TelaCadastro,
+  },
+
   {
     path: '/about',
     name: 'about',
@@ -21,7 +36,9 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  model: 'history',
+  base: process.env.BASE_URL,
+  routes,
 })
 
 export default router

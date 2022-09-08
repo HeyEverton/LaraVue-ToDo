@@ -5,6 +5,8 @@ import store from '@/store'
 import '@/plugins/axios';
 import '@/plugins/vee-validate';
 import '@/assets/css/tailwind.css'
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 Vue.config.productionTip = false

@@ -3,14 +3,18 @@
 
         <ValidationObserver tag="form" ref="loginForm" @submit.stop.prevent="loginUser">
             <form>
+
                 <div class="mb-3 mt-4">
-                    <div class="alert alert-danger" v-if="response.message">
+
+                    <div :class="`alert alert-${response.color}`" v-if="response.message">
                         <h6>{{response.message}}</h6>
                     </div>
+
                     <ValidationProvider rules="required|email" name="E-mail" v-slot="{ errors }">
-                        <label for="formGroupExampleInput" class="form-label fs-5">E-mail</label>
+                        <label for="email" class="form-label fs-5">E-mail</label>
                         <input v-model="email" type="email" class="form-control" id="firstName"
                             placeholder="Insira seu nome">
+
                         <div class="text-danger fs-6" v-if="!!errors[0]">
                             {{errors[0]}}
                         </div>
@@ -22,6 +26,7 @@
                         <label for="formGroupExampleInput2" class="form-label fs-5">Senha</label>
                         <input v-model="password" type="password" class="form-control" id="password"
                             placeholder="Insira sua senha">
+
                         <div class="text-danger fs-6" v-if="!!errors[0]">
                             {{errors[0]}}
                         </div>
@@ -70,6 +75,7 @@ export default {
             password: '',
             response: {
                 message: '',
+                color: '',
             },
             spinner: {
                 login: false
@@ -100,6 +106,7 @@ export default {
                 .catch((e) => {
                     this.spinner.login = false;
                     const errorCode = e?.response?.data?.error || 'Server error';
+                    this.response.color = 'danger';
                     this.response.message = message[errorCode];
                 })
         },

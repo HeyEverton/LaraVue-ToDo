@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import TelaLogin from '@/views/TelaLogin.vue'
 import TelaCadastro from '@/views/TelaCadastro'
+import TelaVerificarEmail from '@/views/TelaVerificarEmail.vue'
 
 Vue.use(VueRouter)
 
@@ -20,9 +21,15 @@ const routes = [
   },
 
   {
-    path: '/register',
-    name: 'register',
+    path: '/registro',
+    name: 'registro',
     component: TelaCadastro,
+  },
+
+  {
+    path: '/verificar-email',
+    name: 'verificar-email',
+    component: TelaVerificarEmail,
   },
 
   {

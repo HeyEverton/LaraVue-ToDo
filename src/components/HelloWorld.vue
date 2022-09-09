@@ -20,7 +20,7 @@
               <div class="carousel-caption text-start">
                 <h1>Lorem ipsum</h1>
                 <p>Lorem ipsum dolor sit amet</p>
-                <router-link to="/register" class="btn btn-primary btn-lg">Cadastre-se</router-link>
+                <router-link to="/registro" class="btn btn-primary btn-lg">Cadastre-se</router-link>
               </div>
             </div>
           </div>
@@ -226,5 +226,4 @@ li {
 .mt-10 {
   margin-top: 70px
 }
-
 </style>

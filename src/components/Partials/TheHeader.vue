@@ -18,11 +18,12 @@
                                 <router-link class="nav-link" to="/login">Login</router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link class="nav-link" to="/register">Cadastre-se</router-link>
+                                <router-link class="nav-link" to="/registro">Cadastre-se</router-link>
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Pesquisando por..." aria-label="Search">
+                            <input class="form-control me-2" type="search" placeholder="Pesquisando por..."
+                                aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Pesquisar</button>
                         </form>
                     </div>

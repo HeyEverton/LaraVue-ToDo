@@ -3,7 +3,7 @@ import { required, email } from 'vee-validate/dist/rules';
 import { messages as messagePt } from 'vee-validate/dist/locale/pt_BR';
 
 
-extend('requrired', {
+extend('required', {
     ...required,
     message: messagePt.required,
 });

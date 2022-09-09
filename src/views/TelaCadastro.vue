@@ -1,5 +1,5 @@
 <template>
-    <div class="container d-flex justify-content-center">
+    <div class="container d-flex justify-content-center mt-10">
        
         <form>
 
@@ -57,3 +57,9 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.mt-10 {
+    margin-top: 80px;
+}
+</style>

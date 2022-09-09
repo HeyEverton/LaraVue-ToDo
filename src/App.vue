@@ -1,13 +1,18 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/register">Cadastre-se</router-link>
-    </nav>
+    <NavBar/>
     <router-view/>
   </div>
 </template>
+
+<script>
+  import NavBar from '@/components/Partials/TheHeader'
+export default {
+  components: {
+    NavBar,
+  }
+}
+</script>
 
 <style>
 #app {

@@ -124,8 +124,6 @@ export default {
                     this.resetForm();
 
                 }).catch((e) => {
-                    this.spinner.register = true;
-
                     const errorCode = e?.response?.data?.error || 'Server error';
                     this.response.color = 'danger';
                     this.response.message = message[errorCode];

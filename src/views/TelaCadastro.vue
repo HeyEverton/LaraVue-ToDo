@@ -1,5 +1,7 @@
 <template>
+
     <div class="container d-flex justify-content-center mt-10">
+        <NavBar />
         <ValidationObserver ref="registerForm" tag="form" @submit.stop.prevent="registerUser">
 
             <div :class="`alert alert-${response.color}`" v-if="response.message">
@@ -9,6 +11,7 @@
             <form>
                 <ValidationProvider v-slot="{errors}" rules="required" name="Primeiro nome">
                     <div class="mb-3 mt-4">
+                        <h1 class="mb-4">Cadastre-se</h1>
                         <label for="formGroupExampleInput" class="form-label fs-5">Nome</label>
                         <input type="text" v-model="firstName" class="form-control" id="firstName"
                             placeholder="Insira seu nome">
@@ -68,8 +71,10 @@
 
 
 <script>
-import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import message from '@/utils/messages';
+
+import NavBar from '@/components/Partials/TheHeader'
+import { ValidationObserver, ValidationProvider } from 'vee-validate'
+import message from '@/utils/messages'
 
 
 export default {
@@ -78,7 +83,8 @@ export default {
 
     components: {
         ValidationObserver,
-        ValidationProvider
+        ValidationProvider,
+        NavBar,
     },
 
     data() {
@@ -100,7 +106,7 @@ export default {
     methods: {
 
         async registerUser() {
-            const validator = await this.$refs.registerForm.validate();
+            const validator = await this.$refs.registerForm.validate()
             if (!validator) {
                 return;
             }
@@ -116,7 +122,8 @@ export default {
 
             this.spinner.register = true;
 
-            this.$http.post('v1/register', payload)
+            this.$http
+                .post('v1/register', payload)
                 .then(() => {
                     this.response.color = 'success';
                     this.response.message = 'Seu cadastro foi feito com sucesso!'
@@ -124,7 +131,7 @@ export default {
                     this.resetForm();
 
                 }).catch((e) => {
-                    const errorCode = e?.response?.data?.error || 'Server error';
+                    const errorCode = e?.response?.data?.error || 'ServerError'
                     this.response.color = 'danger';
                     this.response.message = message[errorCode];
                 }).finally(() => {
@@ -133,17 +140,17 @@ export default {
         },
 
         resetResponse() {
-            this.response.color = '';
-            this.response.message = '';
+            this.response.color = ''
+            this.response.message = ''
         },
 
         resetForm() {
-            this.$refs.registerForm.reset();
+            this.$refs.registerForm.reset()
 
-            this.first_name = '';
-            this.last_name = '';
-            this.email = '';
-            this.password = '';
+            this.first_name = ''
+            this.last_name = ''
+            this.email = ''
+            this.password = ''
         }
     },
 

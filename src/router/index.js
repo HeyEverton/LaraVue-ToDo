@@ -4,6 +4,8 @@ import HomeView from '@/views/HomeView.vue'
 import TelaLogin from '@/views/TelaLogin.vue'
 import TelaCadastro from '@/views/TelaCadastro'
 import TelaVerificarEmail from '@/views/TelaVerificarEmail.vue'
+import TelaEsqueceuSenha from '@/views/TelaEsqueceuSenha.vue'
+import TelaResetarSenha from '@/views/TelaResetarSenha.vue'
 
 Vue.use(VueRouter)
 
@@ -30,6 +32,18 @@ const routes = [
     path: '/verificar-email',
     name: 'verificar-email',
     component: TelaVerificarEmail,
+  },
+
+  {
+    path: '/esqueci-senha',
+    name: 'esqueci-senha',
+    component: TelaEsqueceuSenha,
+  },
+
+  {
+    path: '/recuperar-senha',
+    name: 'recuperar-senha',
+    component: TelaResetarSenha,
   },
 
   {

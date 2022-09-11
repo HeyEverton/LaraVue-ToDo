@@ -8,6 +8,7 @@ import TelaCadastro from '@/views/TelaCadastro'
 import TelaVerificarEmail from '@/views/TelaVerificarEmail.vue'
 import TelaEsqueceuSenha from '@/views/TelaEsqueceuSenha.vue'
 import TelaResetarSenha from '@/views/TelaResetarSenha.vue'
+import TelaPerfil from '@/views/TelaPerfil.vue'
 
 //====================SERVICES================//
 import Guard from '@/service/middleware'
@@ -51,6 +52,13 @@ const routes = [
     path: '/recuperar-senha',
     name: 'recuperar-senha',
     component: TelaResetarSenha,
+  },
+
+  {
+    path: '/meu-perfil',
+    name: 'meu-perfil',
+    beforeEnter: Guard.redirectIfNotAuthenticated,
+    component: TelaPerfil,
   },
 
   {

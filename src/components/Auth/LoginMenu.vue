@@ -1,6 +1,6 @@
 
 <template>
-    <div class="d-flex justify-content-center mb-2">
+    <div class="d-flex justify-content-center mb-5">
         <router-link to="/login" class="px-2 py-2 nav-link fs-5 ">
             Login
         </router-link>
@@ -18,10 +18,6 @@ export default {
     data() {
 
     },
-    methods: {
-        teste() {
-            alert('chegou')
-        }
-    },
+    methods: {},
 }
 </script>

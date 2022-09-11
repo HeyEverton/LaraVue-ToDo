@@ -27,14 +27,16 @@
                                 <img class="d-flex color" src="@/assets/img/person-circle.svg" alt="">
                             </button>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <router-link class="nav-link" to="profile">
+                                <li style="margin-left:10px;">
+                                    <router-link class="nav-link" to="meu-perfil">
                                         Meu perfil
                                     </router-link>
                                 </li>
-                                <li><router-link class="nav-link" to="profile">
-                                   Logout
-                                </router-link></li>
+                                <li style="margin-left:10px;">
+                                    <router-link class="nav-link" to="logout">
+                                        Logout
+                                    </router-link>
+                                </li>
                             </ul>
                         </div>
                     </div>

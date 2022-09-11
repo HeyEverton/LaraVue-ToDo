@@ -1,7 +1,8 @@
 <template>
-  <div class="home">
-    <NavBar />
-    <h1>home page</h1>
+  <div class="container">
+    <NavBar/>
+    <h1 class="mt-5">home page</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed saepe cum sint aperiam tempore assumenda distinctio laudantium ipsum amet cupiditate. Repellat quibusdam, qui id tempora accusantium voluptatem porro autem ea!</p>
   </div>
 </template>
 

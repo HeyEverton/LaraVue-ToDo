@@ -1,19 +1,19 @@
 <template>
   <div class="home">
     <NavBar />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>home page</h1>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
 import NavBar from '@/components/Partials/TheHeader'
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld,
+
     NavBar
   }
 }

@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
+    "bootstrap-icons": "^1.9.1",
     "core-js": "^3.8.3",
     "css-loader": "^6.7.1",
     "eslint-import-resolver-webpack": "^0.13.2",

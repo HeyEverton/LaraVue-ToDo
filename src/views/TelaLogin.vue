@@ -57,7 +57,7 @@
 
 <script>
 import NavBar from '@/components/Partials/TheHeader'
-import Cookie from 'js-cookie';
+import Cookie from "@/service/cookie"
 import { ValidationObserver, ValidationProvider } from 'vee-validate'
 import message from '@/utils/messages'
 
@@ -103,9 +103,14 @@ export default {
                 .post('v1/login', payload)
                 .then((response => {
                     const token = `${response.data.token_type} ${response.data.access_token}`
-                    Cookie.set('_todolist_token', token, { expires: 30 })
+                    Cookie.setToken(token)
                     this.$store.commit('user/STORE_USER', response.data.data)
+                    this.spinner.login = false;
                 }))
+                .then(() => {
+                    this.$router.replace('/')
+                })
+
                 .catch((e) => {
                     this.spinner.login = false;
                     const errorCode = e?.response?.data?.error || 'ServerError'
@@ -119,7 +124,6 @@ export default {
             this.response.message = ''
         }
     },
-
 }
 </script>
 

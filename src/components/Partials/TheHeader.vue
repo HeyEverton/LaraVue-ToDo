@@ -21,11 +21,22 @@
                                 <router-link class="nav-link" to="/registro">Cadastre-se</router-link>
                             </li>
                         </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Pesquisando por..."
-                                aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-                        </form>
+                        <div class="btn-group dropstart d-flex">
+                            <button type="button" class="btn btn-secondary dropdown-toggle d-flex"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class="d-flex color" src="@/assets/img/person-circle.svg" alt="">
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <router-link class="nav-link" to="profile">
+                                        Meu perfil
+                                    </router-link>
+                                </li>
+                                <li><router-link class="nav-link" to="profile">
+                                   Logout
+                                </router-link></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -42,3 +53,7 @@ export default {
     },
 }
 </script>
+
+<style>
+
+</style>

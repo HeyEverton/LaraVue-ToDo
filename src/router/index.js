@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+//=================TELAS====================//
 import HomeView from '@/views/HomeView.vue'
 import TelaLogin from '@/views/TelaLogin.vue'
 import TelaCadastro from '@/views/TelaCadastro'
@@ -7,17 +9,22 @@ import TelaVerificarEmail from '@/views/TelaVerificarEmail.vue'
 import TelaEsqueceuSenha from '@/views/TelaEsqueceuSenha.vue'
 import TelaResetarSenha from '@/views/TelaResetarSenha.vue'
 
+//====================SERVICES================//
+import Guard from '@/service/middleware'
+
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
+    beforeEnter: Guard.redirectIfNotAuthenticated,
     name: 'home',
     component: HomeView
   },
 
   {
     path: '/login',
+    beforeEnter: Guard.redirectIfAuthenticated,
     name: 'login',
     component: TelaLogin,
   },

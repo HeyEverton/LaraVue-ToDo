@@ -2,19 +2,22 @@
   <div class="container d-flex justify-content-center mt-10">
     <NavBar />
 
-    <form>
+    <form @submit.stop.prevent="createTodo">
       <div class="mb-3 mt-4">
         <h1 class="mb-4">Lista de tarefas</h1>
-
-        <label for="label" class="form-label fs-5">Nome</label>
+        <div :class="`alert alert-${response.color}`" v-if="response.message">
+          <h6>{{response.message}}</h6>
+        </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Insira o nome da tarefa"
+          <input v-model="newTodo" type="text" class="form-control" placeholder="Insira o nome da lista..."
             aria-label="Insira o nome da tarefa" aria-describedby="button-addon2">
-          <button class="btn btn-outline-primary" type="button" id="buttonSend">Adicionar</button>
+          <button class="btn btn-outline-primary" @click="createTodo" type="button" id="buttonSend">Adicionar</button>
         </div>
+
         <div v-if="spinner.get_todos" class="d-flex justify-content-center">
-          <img src="@/assets/img/spinner.svg" class=" mr-2" alt="loading">
+          <img src="@/assets/img/spinner.svg" class=" thumbnail mr-2" alt="loading">
         </div>
+
         <div v-for="todo in todos" :key="todo.id" class="card mb-2" style="width: 20rem;">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">{{todo.label}}</li>
@@ -39,7 +42,12 @@ export default {
   },
   data() {
     return {
+      newTodo: '',
       todos: [],
+      response: {
+        color: '',
+        message: '',
+      },
       spinner: {
         get_todos: false,
       }
@@ -47,6 +55,7 @@ export default {
   },
 
   methods: {
+
     getTodos() {
       this.spinner.get_todos = true
 
@@ -58,7 +67,39 @@ export default {
           this.spinner.get_todos = false
 
         })
-    }
+    },
+
+    createTodo() {
+      if (this.newTodo.length == 0) {
+        this.response.message = 'O campo título é obrigatório'
+        this.response.color = 'danger'
+        return
+      }
+
+      
+      const payload = {
+        label: this.newTodo,
+      }
+      
+      this.spinner.get_todos = true
+      this.resetResponse();
+
+      this.$http.post('v1/todos', payload)
+        .then((response) => {
+          this.todos.unshift(response.data.data)
+          this.newTodo = ''
+          this.spinner.get_todos = false
+          this.response.message = 'Lista criada com sucesso'
+          this.response.color = 'success'
+        })
+        
+      },
+
+    resetResponse() {
+      this.response.color = ''
+      this.response.message = ''
+    },
+
   },
 
   created() {

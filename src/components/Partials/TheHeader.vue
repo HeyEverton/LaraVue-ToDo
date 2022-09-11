@@ -24,8 +24,7 @@
                         <div class="btn-group dropstart d-flex">
                             <button type="button" class="btn btn-secondary dropdown-toggle d-flex align-items-center"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                               <span style="margin-right: 10px;">{{first_name}}</span>
-                                <img class="d-flex color" src="@/assets/img/person-circle.svg" alt="">
+                                <img class="d-flex" src="@/assets/img/person-circle.svg" alt="">
                             </button>
                             <ul class="dropdown-menu">
                                 <li style="margin-left:10px;">

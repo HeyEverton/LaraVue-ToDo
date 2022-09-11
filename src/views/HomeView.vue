@@ -4,10 +4,9 @@
 
     <form @submit.stop.prevent="createTodo">
       <div class="mb-3 mt-4">
+
         <h1 class="mb-4">Lista de tarefas</h1>
-        <div :class="`alert alert-${response.color}`" v-if="response.message">
-          <h6>{{response.message}}</h6>
-        </div>
+
         <div class="input-group mb-3">
           <input v-model="newTodo" type="text" class="form-control" placeholder="Insira o nome da lista..."
             aria-label="Insira o nome da tarefa" aria-describedby="button-addon2">
@@ -20,7 +19,10 @@
 
         <div v-for="todo in todos" :key="todo.id" class="card mb-2" style="width: 20rem;">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{todo.label}}</li>
+            <li class="list-group-item">
+              <input type="text" v-model="todo.label" @keyup.enter="updateTodo(todo)">
+              <button class="btn btn-primary" @click.stop.prevent="destroyTodo(todo)">X</button>
+            </li>
           </ul>
         </div>
 
@@ -70,17 +72,15 @@ export default {
     },
 
     createTodo() {
-      if (this.newTodo.length == 0) {
-        this.response.message = 'O campo título é obrigatório'
-        this.response.color = 'danger'
+      if (!this.newTodo.length) {
         return
       }
 
-      
+
       const payload = {
         label: this.newTodo,
       }
-      
+
       this.spinner.get_todos = true
       this.resetResponse();
 
@@ -92,8 +92,27 @@ export default {
           this.response.message = 'Lista criada com sucesso'
           this.response.color = 'success'
         })
-        
-      },
+
+    },
+
+    updateTodo(todo) {
+      const payload = {
+        label: todo.label,
+      }
+      this.$http.put(`v1/todos/${todo.id}`, payload)
+    },
+
+    destroyTodo(todo) {
+      this.$http.delete(`v1/todos/${todo.id}`)
+        .then(() => {
+          const idx = this.todos.findIndex(o => o.id === todo.id);
+          this.todos.splice(idx, 1)
+        })
+    },
+
+
+
+
 
     resetResponse() {
       this.response.color = ''

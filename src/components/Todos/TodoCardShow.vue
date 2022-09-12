@@ -2,7 +2,9 @@
     <div class="card mb-2" style="width: 20rem;">
         <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{ todo.label }}<br>
+                <router-link :to="{ name: 'todo-tasks', params: { id: todo.id }}" class="nav-link">
+                    {{ todo.label }}<br>
+                </router-link>
 
                 <div class="dropdown d-flex">
                     <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -21,6 +23,7 @@
             </li>
         </ul>
     </div>
+
 </template>
 <script>
 /* eslint-disable */
@@ -43,12 +46,11 @@ export default {
         onUpdate() {
             this.$emit('update')
         },
-        
+
         onDelete() {
             this.$emit('delete')
-            
+
         },
     },
-
 }
 </script>

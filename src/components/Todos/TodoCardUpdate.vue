@@ -19,6 +19,7 @@
     </div>
 
 </template>
+
 <script>
 /* eslint-disable */
 import { ValidationObserver, ValidationProvider } from 'vee-validate'

@@ -1,14 +1,12 @@
 <template>
     <div class="card mb-2" style="width: 20rem;">
-
         <ul class="list-group list-group-flush">
             <TodoCardShow v-if="isShowing" :todo="todo" @update="changeStateToUpdate" @delete="changeStateToDelete" />
 
-            <TodoCardUpdate :todo="todo" v-if="isUpdating" @cancel="changeStateToShow"/>
+            <TodoCardUpdate :todo="todo" v-if="isUpdating" @cancel="changeStateToShow" />
 
-            <TodoCardDelete :todo="todo" v-if="isDeleting" @cancel="changeStateToShow" @afterDeleting="afterDeleting"/>
+            <TodoCardDelete :todo="todo" v-if="isDeleting" @cancel="changeStateToShow" @afterDeleting="afterDeleting" />
         </ul>
-
     </div>
 </template>
 <script>
@@ -27,10 +25,10 @@ export default {
     },
 
     components: {
-    TodoCardShow,
-    TodoCardUpdate,
-    TodoCardDelete
-},
+        TodoCardShow,
+        TodoCardUpdate,
+        TodoCardDelete
+    },
 
     computed: {
         isShowing() {

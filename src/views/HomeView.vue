@@ -1,7 +1,6 @@
 <template>
   <div class="container d-flex justify-content-center mt-10">
     <NavBar />
-
     <form @submit.stop.prevent="createTodo">
       <div class="mb-3 mt-4">
 
@@ -18,10 +17,9 @@
         </div>
 
         <TodoCard v-for="todo in todos" :key="todo.id" :todo="todo" @afterDeleting="afterDeleting" />
-
+        
       </div>
     </form>
-
   </div>
 </template>
 

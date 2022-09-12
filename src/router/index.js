@@ -9,6 +9,7 @@ import TelaVerificarEmail from '@/views/TelaVerificarEmail.vue'
 import TelaEsqueceuSenha from '@/views/TelaEsqueceuSenha.vue'
 import TelaResetarSenha from '@/views/TelaResetarSenha.vue'
 import TelaPerfil from '@/views/TelaPerfil.vue'
+import TodoTasks from '@/views/TodoTasks.vue'
 
 //====================SERVICES================//
 import Guard from '@/service/middleware'
@@ -34,6 +35,12 @@ const routes = [
     path: '/registro',
     name: 'registro',
     component: TelaCadastro,
+  },
+
+  {
+    path: '/todo/:id',
+    name: 'todo-tasks',
+    component: TodoTasks,
   },
 
   {

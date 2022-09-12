@@ -18,13 +18,12 @@
                         </li>
                     </ul>
                 </div>
-                <!-- <button @click.stop.prevent="changeStateToUpdate" class="btn btn-primary mr-3">Editar</button> -->
-                <!-- <button @click.stop.prevent="changeStateToDelete" class="btn btn-primary">Excluir</button> -->
             </li>
         </ul>
     </div>
 </template>
 <script>
+/* eslint-disable */
 export default {
     name: 'TodoCardShow',
 

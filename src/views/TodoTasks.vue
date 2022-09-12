@@ -1,66 +1,55 @@
 <template>
     <div class="container d-flex justify-content-center mt-10">
         <NavBar />
-        <!-- <ValidationObserver tag="form" ref="loginForm" @submit.stop.prevent="loginUser"> -->
-        <form>
-            <div class="mb-3">
-                <div v-if="spinner.get_todo" class="d-flex justify-content-center">
-                    <img v-if="spinner.get_todo" src="@/assets/img/spinner.svg" class="thumbnail mr-2"
-                        alt="loading.." />
+        <div class="mb-3">
+            <div v-if="spinner.get_todo" class="d-flex justify-content-center">
+                <img v-if="spinner.get_todo" src="@/assets/img/spinner.svg" class="thumbnail mr-2" alt="loading.." />
+            </div>
+
+            <template v-else>
+                <div class="mb-3 mt-4">
+                    <h4 class="mb-4">
+                        {{ todo.label}}
+                    </h4>
                 </div>
 
-                <template v-else>
-
-                    <div class="mb-3 mt-4">
-                        <h4 class="mb-4">
-                            {{ todo.label}}
-                        </h4>
-                    </div>
-
-                    <TodoTaskCard v-for="task in todo.tasks" :key="task.id" :Task="Task"/>
-
+                <form>
                     <div class="input-group mb-3">
                         <input v-model="newTask" type="text" class="form-control" placeholder="Adicione um novo item..."
-                            aria-label="Insira o nome da tarefa" aria-describedby="button-addon2">
+                            aria-label="Adicione um novo item..." aria-describedby="button-addon2">
                         <button class="btn btn-outline-primary" @click="addTask" type="button"
                             id="buttonSend">Adicionar</button>
                     </div>
+                </form>
+                <div class="card mb-2" style="width: 20rem;" >
 
-                    <div class="card mb-2" style="width: 20rem;" v-for="task in todo.tasks" :key="task.id">
-                        <ul class="list-group list-group-flush" v-if="todo.tasks.length">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{task.label}} <br>
-                            </li>
-                        </ul>
-                        <div v-else class="text-center text-lg text-gray-600">
-                            Você ainda não tem nenhuma tarefa.
-                        </div>
+                    <div v-if="todo.tasks.length">
+                        <TodoTaskCard v-for="task in todo.tasks" :key="task.id" :task="task" />
                     </div>
 
+                    <div v-else class="text-center text-lg">
+                        Você ainda não tem nenhuma tarefa.
+                    </div>
+                </div>
 
+            </template>
 
-                </template>
-                <!-- <div class="text-danger fs-6" v-if="!!errors[0]">
-                            {{errors[0]}}
-                        </div> -->
-                <!-- </ValidationProvider> -->
-            </div>
-        </form>
-        <!-- </ValidationObserver> -->
+        </div>
+
 
     </div>
 </template>
 <script>
 import NavBar from '@/components/Partials/TheHeader'
-import TodoTaskCard from '@/components/Todos/TodoTaskCard.vue'
+import TodoTaskCard from '@/components/Todos/TodoTaskCard'
 
 export default {
     name: 'TodoTasks',
 
     components: {
-    NavBar,
-    TodoTaskCard
-},
+        NavBar,
+        TodoTaskCard
+    },
 
     data() {
         return {

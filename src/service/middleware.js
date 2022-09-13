@@ -12,7 +12,8 @@ export default {
             next({ name: 'login' })
         }
         //AINDA TEM QUE CHECAR SE O TOKEN ESTA VALIDO
-        await axios.get('http://localhost:8000/api/v1/me')
+        await axios
+            .get('http://localhost:8000/api/v1/me')
             .then((response) => {
                 if (!store?.state?.user?.id) {
                     store.commit('user/STORE_USER', response.data.data)
@@ -22,7 +23,7 @@ export default {
                 Cookie.deleteToken()
                 next({ name: 'login' })
             })
-        
+
         next()
     },
 

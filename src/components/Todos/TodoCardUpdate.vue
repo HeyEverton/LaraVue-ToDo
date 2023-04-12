@@ -56,12 +56,13 @@ export default {
             const payload = {
                 label: this.localLabel
             }
-            this.$http
-                .put(`v1/todos/${this.todo.id}`, payload)
-                .then(() => {
-                    this.todo.label = this.localLabel
-                    this.onCancel()
-                })
+            console.log(this.todo.id)
+            // this.$http
+            //     .put(`v1/todos/${this.todo.id}`, payload)
+            //     .then(() => {
+            //         this.todo.label = this.localLabel
+            //         this.onCancel()
+            //     })
         }
     },
 

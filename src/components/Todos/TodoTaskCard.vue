@@ -64,12 +64,12 @@ import { debounce } from 'lodash';
 export default {
     name: 'TodoTaskCard',
 
-    props: {
-        task: {
-            type: Object,
-            default: () => ({})
-        },
-    },
+    // props: {
+    //     task: {
+    //         type: Object,
+    //         default: () => ({})
+    //     },
+    // },
 
     data() {
         return {
